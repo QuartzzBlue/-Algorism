@@ -5,15 +5,15 @@ import java.util.Queue;
 
 /*
  * 
- * °Ç¼³È¸»çÀÇ ¼³°è»çÀÎ ÁÒ¸£µð´Â °í°´»ç·ÎºÎÅÍ ÀÚµ¿Â÷ °æÁÖ·Î °Ç¼³¿¡ ÇÊ¿äÇÑ °ßÀûÀ» ÀÇ·Ú¹Þ¾Ò½À´Ï´Ù.
-	Á¦°øµÈ °æÁÖ·Î ¼³°è µµ¸é¿¡ µû¸£¸é °æÁÖ·Î ºÎÁö´Â N x N Å©±âÀÇ Á¤»ç°¢Çü °ÝÀÚ ÇüÅÂÀÌ¸ç °¢ °ÝÀÚ´Â 1 x 1 Å©±âÀÔ´Ï´Ù.
-	¼³°è µµ¸é¿¡´Â °¢ °ÝÀÚÀÇ Ä­Àº 0 ¶Ç´Â 1 ·Î Ã¤¿öÁ® ÀÖÀ¸¸ç, 0Àº Ä­ÀÌ ºñ¾î ÀÖÀ½À» 1Àº ÇØ´ç Ä­ÀÌ º®À¸·Î Ã¤¿öÁ® ÀÖÀ½À» ³ªÅ¸³À´Ï´Ù.
-	°æÁÖ·ÎÀÇ Ãâ¹ßÁ¡Àº (0, 0) Ä­(ÁÂÃø »ó´Ü)ÀÌ¸ç, µµÂøÁ¡Àº (N-1, N-1) Ä­(¿ìÃø ÇÏ´Ü)ÀÔ´Ï´Ù. ÁÒ¸£µð´Â Ãâ¹ßÁ¡ÀÎ (0, 0) Ä­¿¡¼­ Ãâ¹ßÇÑ ÀÚµ¿Â÷°¡ µµÂøÁ¡ÀÎ (N-1, N-1) Ä­±îÁö ¹«»çÈ÷ µµ´ÞÇÒ ¼ö ÀÖ°Ô Áß°£¿¡ ²÷±âÁö ¾Êµµ·Ï °æÁÖ·Î¸¦ °Ç¼³ÇØ¾ß ÇÕ´Ï´Ù.
-	°æÁÖ·Î´Â »ó, ÇÏ, ÁÂ, ¿ì·Î ÀÎÁ¢ÇÑ µÎ ºó Ä­À» ¿¬°áÇÏ¿© °Ç¼³ÇÒ ¼ö ÀÖÀ¸¸ç, º®ÀÌ ÀÖ´Â Ä­¿¡´Â °æÁÖ·Î¸¦ °Ç¼³ÇÒ ¼ö ¾ø½À´Ï´Ù.
-	ÀÌ¶§, ÀÎÁ¢ÇÑ µÎ ºó Ä­À» »óÇÏ ¶Ç´Â ÁÂ¿ì·Î ¿¬°áÇÑ °æÁÖ·Î¸¦ Á÷¼± µµ·Î ¶ó°í ÇÕ´Ï´Ù.
-	¶ÇÇÑ µÎ Á÷¼± µµ·Î°¡ ¼­·Î Á÷°¢À¸·Î ¸¸³ª´Â ÁöÁ¡À» ÄÚ³Ê ¶ó°í ºÎ¸¨´Ï´Ù.
-	°Ç¼³ ºñ¿ëÀ» °è»êÇØ º¸´Ï Á÷¼± µµ·Î ÇÏ³ª¸¦ ¸¸µé ¶§´Â 100¿øÀÌ ¼Ò¿äµÇ¸ç, ÄÚ³Ê¸¦ ÇÏ³ª ¸¸µé ¶§´Â 500¿øÀÌ Ãß°¡·Î µì´Ï´Ù.
-	ÁÒ¸£µð´Â °ßÀû¼­ ÀÛ¼ºÀ» À§ÇØ °æÁÖ·Î¸¦ °Ç¼³ÇÏ´Â µ¥ ÇÊ¿äÇÑ ÃÖ¼Ò ºñ¿ëÀ» °è»êÇØ¾ß ÇÕ´Ï´Ù.
+ * ê±´ì„¤íšŒì‚¬ì˜ ì„¤ê³„ì‚¬ì¸ ì£ ë¥´ë””ëŠ” ê³ ê°ì‚¬ë¡œë¶€í„° ìžë™ì°¨ ê²½ì£¼ë¡œ ê±´ì„¤ì— í•„ìš”í•œ ê²¬ì ì„ ì˜ë¢°ë°›ì•˜ìŠµë‹ˆë‹¤.
+	ì œê³µëœ ê²½ì£¼ë¡œ ì„¤ê³„ ë„ë©´ì— ë”°ë¥´ë©´ ê²½ì£¼ë¡œ ë¶€ì§€ëŠ” N x N í¬ê¸°ì˜ ì •ì‚¬ê°í˜• ê²©ìž í˜•íƒœì´ë©° ê° ê²©ìžëŠ” 1 x 1 í¬ê¸°ìž…ë‹ˆë‹¤.
+	ì„¤ê³„ ë„ë©´ì—ëŠ” ê° ê²©ìžì˜ ì¹¸ì€ 0 ë˜ëŠ” 1 ë¡œ ì±„ì›Œì ¸ ìžˆìœ¼ë©°, 0ì€ ì¹¸ì´ ë¹„ì–´ ìžˆìŒì„ 1ì€ í•´ë‹¹ ì¹¸ì´ ë²½ìœ¼ë¡œ ì±„ì›Œì ¸ ìžˆìŒì„ ë‚˜íƒ€ëƒ…ë‹ˆë‹¤.
+	ê²½ì£¼ë¡œì˜ ì¶œë°œì ì€ (0, 0) ì¹¸(ì¢Œì¸¡ ìƒë‹¨)ì´ë©°, ë„ì°©ì ì€ (N-1, N-1) ì¹¸(ìš°ì¸¡ í•˜ë‹¨)ìž…ë‹ˆë‹¤. ì£ ë¥´ë””ëŠ” ì¶œë°œì ì¸ (0, 0) ì¹¸ì—ì„œ ì¶œë°œí•œ ìžë™ì°¨ê°€ ë„ì°©ì ì¸ (N-1, N-1) ì¹¸ê¹Œì§€ ë¬´ì‚¬ížˆ ë„ë‹¬í•  ìˆ˜ ìžˆê²Œ ì¤‘ê°„ì— ëŠê¸°ì§€ ì•Šë„ë¡ ê²½ì£¼ë¡œë¥¼ ê±´ì„¤í•´ì•¼ í•©ë‹ˆë‹¤.
+	ê²½ì£¼ë¡œëŠ” ìƒ, í•˜, ì¢Œ, ìš°ë¡œ ì¸ì ‘í•œ ë‘ ë¹ˆ ì¹¸ì„ ì—°ê²°í•˜ì—¬ ê±´ì„¤í•  ìˆ˜ ìžˆìœ¼ë©°, ë²½ì´ ìžˆëŠ” ì¹¸ì—ëŠ” ê²½ì£¼ë¡œë¥¼ ê±´ì„¤í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
+	ì´ë•Œ, ì¸ì ‘í•œ ë‘ ë¹ˆ ì¹¸ì„ ìƒí•˜ ë˜ëŠ” ì¢Œìš°ë¡œ ì—°ê²°í•œ ê²½ì£¼ë¡œë¥¼ ì§ì„  ë„ë¡œ ë¼ê³  í•©ë‹ˆë‹¤.
+	ë˜í•œ ë‘ ì§ì„  ë„ë¡œê°€ ì„œë¡œ ì§ê°ìœ¼ë¡œ ë§Œë‚˜ëŠ” ì§€ì ì„ ì½”ë„ˆ ë¼ê³  ë¶€ë¦…ë‹ˆë‹¤.
+	ê±´ì„¤ ë¹„ìš©ì„ ê³„ì‚°í•´ ë³´ë‹ˆ ì§ì„  ë„ë¡œ í•˜ë‚˜ë¥¼ ë§Œë“¤ ë•ŒëŠ” 100ì›ì´ ì†Œìš”ë˜ë©°, ì½”ë„ˆë¥¼ í•˜ë‚˜ ë§Œë“¤ ë•ŒëŠ” 500ì›ì´ ì¶”ê°€ë¡œ ë“­ë‹ˆë‹¤.
+	ì£ ë¥´ë””ëŠ” ê²¬ì ì„œ ìž‘ì„±ì„ ìœ„í•´ ê²½ì£¼ë¡œë¥¼ ê±´ì„¤í•˜ëŠ” ë° í•„ìš”í•œ ìµœì†Œ ë¹„ìš©ì„ ê³„ì‚°í•´ì•¼ í•©ë‹ˆë‹¤.
  *
  */
 
@@ -22,7 +22,7 @@ public class Number4 {
 	static int[][] map = null;
 	static boolean[][] visited = null;
 	
-	static int[] dx = {0,1,0,-1}; //À§ ¿À¸¥ÂÊ ¾Æ·¡ ¿ÞÂÊ
+	static int[] dx = {0,1,0,-1}; //ìœ„ ì˜¤ë¥¸ìª½ ì•„ëž˜ ì™¼ìª½
 	static int[] dy = {-1,0,1,0};
 	
 	static int N = 0;
@@ -61,7 +61,7 @@ public class Number4 {
 	                   }
 	                   next.setDirection(i);
 	                   q.add(next);
-	                   System.out.println("À§Ä¡ : " + nx+", "+ny+" | °¡°Ý : " + map[nx][ny]+ " | ÀÌÀü ¹æÇâ : " + now.getDirection()+ " | ÀÌÈÄ ¹æÇâ : " + next.getDirection());
+	                   System.out.println("ìœ„ì¹˜ : " + nx+", "+ny+" | ê°€ê²© : " + map[nx][ny]+ " | ì´ì „ ë°©í–¥ : " + now.getDirection()+ " | ì´í›„ ë°©í–¥ : " + next.getDirection());
 	                   visited[nx][ny] = true;
 	                }
 	             }
@@ -72,7 +72,7 @@ public class Number4 {
 	}
 	
 	public static void main(String[] args) {
-		/***** ¸Å°³º¯¼ö ¼³Á¤ *****/
+		/***** ë§¤ê°œë³€ìˆ˜ ì„¤ì • *****/
 //		int[][] sample = {{0,0,0}, {0,0,0}, {0,0,0}};
 //		int[][] sample = {{0,0,0,0,0,0,0,1},{0,0,0,0,0,0,0,0},{0,0,0,0,0,1,0,0},{0,0,0,0,1,0,0,0},{0,0,0,1,0,0,0,1},{0,0,1,0,0,0,1,0},{0,1,0,0,0,1,0,0},{1,0,0,0,0,0,0,0}};
 //		int[][] sample = {{0,0,1,0},{0,0,0,0},{0,1,0,1},{1,0,0,0}};
@@ -140,7 +140,6 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
-
 public class Q2178 {
    static int tx = 0;
    static int ty = 0;
@@ -152,7 +151,7 @@ public class Q2178 {
       Queue<Position> q = new LinkedList<Position>();
       q.add(new Position(0, 0));
       
-      int[] dx = {0,1,0,-1}; //À§ ¿À¸¥ÂÊ ¾Æ·¡ ¿ÞÂÊ
+      int[] dx = {0,1,0,-1}; //ìœ„ ì˜¤ë¥¸ìª½ ì•„ëž˜ ì™¼ìª½
       int[] dy = {-1,0,1,0};
       
       while(!q.isEmpty()) {
@@ -188,7 +187,7 @@ public class Q2178 {
       for(int i = 0; i < tx; i++) {
          String temp = br.readLine();
          for(int j = 0; j < ty; j++) {
-            //¿Ü¿öµÎÀÚ! ¹®ÀÚ->¼ýÀÚ ASCII ÄÚµå Â÷´Â 48 (0-9 = 48-57)
+            //ì™¸ì›Œë‘ìž! ë¬¸ìž->ìˆ«ìž ASCII ì½”ë“œ ì°¨ëŠ” 48 (0-9 = 48-57)
             map[i][j] = temp.charAt(j) - 48;
          }
       }
@@ -196,9 +195,7 @@ public class Q2178 {
       System.out.println(answer);
       System.out.println(map[tx-1][ty-1]);
    }
-
 }
-
 class Position{
    int x;
    int y;
@@ -222,5 +219,4 @@ class Position{
    }
    
 }
-
 */

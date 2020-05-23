@@ -6,48 +6,48 @@ import java.util.Scanner;
 import java.util.Set;
 
 /*
- * °³¹ßÀÚ Ãâ½ÅÀ¸·Î ¼¼°è ÃÖ°íÀÇ °©ºÎ°¡ µÈ ¾îÇÇÄ¡´Â ½ºÆ®·¹½º¸¦ ¹ÞÀ» ¶§¸é ÀÌ¸¦ Ç®±â À§ÇØ ¿ÀÇÁ¶óÀÎ ¸ÅÀå¿¡ ¼îÇÎÀ» ÇÏ·¯ °¡°ï ÇÕ´Ï´Ù.
-	¾îÇÇÄ¡´Â ¼îÇÎÀ» ÇÒ ¶§¸é ¸ÅÀå Áø¿­´ëÀÇ Æ¯Á¤ ¹üÀ§ÀÇ ¹°°ÇµéÀ» ¸ðµÎ ½Ï¾µÀÌ ±¸¸ÅÇÏ´Â ½À°üÀÌ ÀÖ½À´Ï´Ù.
-	¾î´À ³¯ ½ºÆ®·¹½º¸¦ Ç®±â À§ÇØ º¸¼® ¸ÅÀå¿¡ ¼îÇÎÀ» ÇÏ·¯ °£ ¾îÇÇÄ¡´Â ÀÌÀüÃ³·³ Áø¿­´ëÀÇ Æ¯Á¤ ¹üÀ§ÀÇ º¸¼®À» ¸ðµÎ ±¸¸ÅÇÏµÇ Æ¯º°È÷ ¾Æ·¡ ¸ñÀûÀ» ´Þ¼ºÇÏ°í ½Í¾ú½À´Ï´Ù.
-	Áø¿­µÈ ¸ðµç Á¾·ùÀÇ º¸¼®À» Àû¾îµµ 1°³ ÀÌ»ó Æ÷ÇÔÇÏ´Â °¡Àå ÂªÀº ±¸°£À» Ã£¾Æ¼­ ±¸¸Å
+ * ê°œë°œìž ì¶œì‹ ìœ¼ë¡œ ì„¸ê³„ ìµœê³ ì˜ ê°‘ë¶€ê°€ ëœ ì–´í”¼ì¹˜ëŠ” ìŠ¤íŠ¸ë ˆìŠ¤ë¥¼ ë°›ì„ ë•Œë©´ ì´ë¥¼ í’€ê¸° ìœ„í•´ ì˜¤í”„ë¼ì¸ ë§¤ìž¥ì— ì‡¼í•‘ì„ í•˜ëŸ¬ ê°€ê³¤ í•©ë‹ˆë‹¤.
+	ì–´í”¼ì¹˜ëŠ” ì‡¼í•‘ì„ í•  ë•Œë©´ ë§¤ìž¥ ì§„ì—´ëŒ€ì˜ íŠ¹ì • ë²”ìœ„ì˜ ë¬¼ê±´ë“¤ì„ ëª¨ë‘ ì‹¹ì“¸ì´ êµ¬ë§¤í•˜ëŠ” ìŠµê´€ì´ ìžˆìŠµë‹ˆë‹¤.
+	ì–´ëŠ ë‚  ìŠ¤íŠ¸ë ˆìŠ¤ë¥¼ í’€ê¸° ìœ„í•´ ë³´ì„ ë§¤ìž¥ì— ì‡¼í•‘ì„ í•˜ëŸ¬ ê°„ ì–´í”¼ì¹˜ëŠ” ì´ì „ì²˜ëŸ¼ ì§„ì—´ëŒ€ì˜ íŠ¹ì • ë²”ìœ„ì˜ ë³´ì„ì„ ëª¨ë‘ êµ¬ë§¤í•˜ë˜ íŠ¹ë³„ížˆ ì•„ëž˜ ëª©ì ì„ ë‹¬ì„±í•˜ê³  ì‹¶ì—ˆìŠµë‹ˆë‹¤.
+	ì§„ì—´ëœ ëª¨ë“  ì¢…ë¥˜ì˜ ë³´ì„ì„ ì ì–´ë„ 1ê°œ ì´ìƒ í¬í•¨í•˜ëŠ” ê°€ìž¥ ì§§ì€ êµ¬ê°„ì„ ì°¾ì•„ì„œ êµ¬ë§¤
 	
-	¿¹¸¦ µé¾î ¾Æ·¡ Áø¿­´ë´Â 4Á¾·ùÀÇ º¸¼®(RUBY, DIA, EMERALD, SAPPHIRE) 8°³°¡ Áø¿­µÈ ¿¹½ÃÀÔ´Ï´Ù.
+	ì˜ˆë¥¼ ë“¤ì–´ ì•„ëž˜ ì§„ì—´ëŒ€ëŠ” 4ì¢…ë¥˜ì˜ ë³´ì„(RUBY, DIA, EMERALD, SAPPHIRE) 8ê°œê°€ ì§„ì—´ëœ ì˜ˆì‹œìž…ë‹ˆë‹¤.
 	
-	Áø¿­´ë ¹øÈ£   1   2   3   4   5   6   7   8
-	º¸¼® ÀÌ¸§   DIA   RUBY   RUBY   DIA   DIA   EMERALD   SAPPHIRE   DIA
-	Áø¿­´ëÀÇ 3¹øºÎÅÍ 7¹ø±îÁö 5°³ÀÇ º¸¼®À» ±¸¸ÅÇÏ¸é ¸ðµç Á¾·ùÀÇ º¸¼®À» Àû¾îµµ ÇÏ³ª ÀÌ»ó¾¿ Æ÷ÇÔÇÏ°Ô µË´Ï´Ù.
+	ì§„ì—´ëŒ€ ë²ˆí˜¸   1   2   3   4   5   6   7   8
+	ë³´ì„ ì´ë¦„   DIA   RUBY   RUBY   DIA   DIA   EMERALD   SAPPHIRE   DIA
+	ì§„ì—´ëŒ€ì˜ 3ë²ˆë¶€í„° 7ë²ˆê¹Œì§€ 5ê°œì˜ ë³´ì„ì„ êµ¬ë§¤í•˜ë©´ ëª¨ë“  ì¢…ë¥˜ì˜ ë³´ì„ì„ ì ì–´ë„ í•˜ë‚˜ ì´ìƒì”© í¬í•¨í•˜ê²Œ ë©ë‹ˆë‹¤.
 	
-	Áø¿­´ëÀÇ 3, 4, 6, 7¹øÀÇ º¸¼®¸¸ ±¸¸ÅÇÏ´Â °ÍÀº Áß°£¿¡ Æ¯Á¤ ±¸°£(5¹ø)ÀÌ ºüÁö°Ô µÇ¹Ç·Î ¾îÇÇÄ¡ÀÇ ¼îÇÎ ½À°ü¿¡ ¸ÂÁö ¾Ê½À´Ï´Ù.
+	ì§„ì—´ëŒ€ì˜ 3, 4, 6, 7ë²ˆì˜ ë³´ì„ë§Œ êµ¬ë§¤í•˜ëŠ” ê²ƒì€ ì¤‘ê°„ì— íŠ¹ì • êµ¬ê°„(5ë²ˆ)ì´ ë¹ ì§€ê²Œ ë˜ë¯€ë¡œ ì–´í”¼ì¹˜ì˜ ì‡¼í•‘ ìŠµê´€ì— ë§žì§€ ì•ŠìŠµë‹ˆë‹¤.
 	
-	Áø¿­´ë ¹øÈ£ ¼ø¼­´ë·Î º¸¼®µéÀÇ ÀÌ¸§ÀÌ ÀúÀåµÈ ¹è¿­ gems°¡ ¸Å°³º¯¼ö·Î ÁÖ¾îÁý´Ï´Ù. ÀÌ¶§ ¸ðµç º¸¼®À» ÇÏ³ª ÀÌ»ó Æ÷ÇÔÇÏ´Â °¡Àå ÂªÀº ±¸°£À» Ã£¾Æ¼­ return ÇÏµµ·Ï solution ÇÔ¼ö¸¦ ¿Ï¼ºÇØÁÖ¼¼¿ä.
-	°¡Àå ÂªÀº ±¸°£ÀÇ ½ÃÀÛ Áø¿­´ë ¹øÈ£¿Í ³¡ Áø¿­´ë ¹øÈ£¸¦ Â÷·Ê´ë·Î ¹è¿­¿¡ ´ã¾Æ¼­ return ÇÏµµ·Ï ÇÏ¸ç, ¸¸¾à °¡Àå ÂªÀº ±¸°£ÀÌ ¿©·¯ °³¶ó¸é ½ÃÀÛ Áø¿­´ë ¹øÈ£°¡ °¡Àå ÀÛÀº ±¸°£À» return ÇÕ´Ï´Ù.
+	ì§„ì—´ëŒ€ ë²ˆí˜¸ ìˆœì„œëŒ€ë¡œ ë³´ì„ë“¤ì˜ ì´ë¦„ì´ ì €ìž¥ëœ ë°°ì—´ gemsê°€ ë§¤ê°œë³€ìˆ˜ë¡œ ì£¼ì–´ì§‘ë‹ˆë‹¤. ì´ë•Œ ëª¨ë“  ë³´ì„ì„ í•˜ë‚˜ ì´ìƒ í¬í•¨í•˜ëŠ” ê°€ìž¥ ì§§ì€ êµ¬ê°„ì„ ì°¾ì•„ì„œ return í•˜ë„ë¡ solution í•¨ìˆ˜ë¥¼ ì™„ì„±í•´ì£¼ì„¸ìš”.
+	ê°€ìž¥ ì§§ì€ êµ¬ê°„ì˜ ì‹œìž‘ ì§„ì—´ëŒ€ ë²ˆí˜¸ì™€ ë ì§„ì—´ëŒ€ ë²ˆí˜¸ë¥¼ ì°¨ë¡€ëŒ€ë¡œ ë°°ì—´ì— ë‹´ì•„ì„œ return í•˜ë„ë¡ í•˜ë©°, ë§Œì•½ ê°€ìž¥ ì§§ì€ êµ¬ê°„ì´ ì—¬ëŸ¬ ê°œë¼ë©´ ì‹œìž‘ ì§„ì—´ëŒ€ ë²ˆí˜¸ê°€ ê°€ìž¥ ìž‘ì€ êµ¬ê°„ì„ return í•©ë‹ˆë‹¤.
 	
-	[Á¦ÇÑ»çÇ×]
-	gems ¹è¿­ÀÇ Å©±â´Â 1 ÀÌ»ó 100,000 ÀÌÇÏÀÔ´Ï´Ù.
-	gems ¹è¿­ÀÇ °¢ ¿ø¼Ò´Â Áø¿­´ë¿¡ ³ª¿­µÈ º¸¼®À» ³ªÅ¸³À´Ï´Ù.
-	gems ¹è¿­¿¡´Â 1¹ø Áø¿­´ëºÎÅÍ Áø¿­´ë ¹øÈ£ ¼ø¼­´ë·Î º¸¼®ÀÌ¸§ÀÌ Â÷·Ê´ë·Î ÀúÀåµÇ¾î ÀÖ½À´Ï´Ù.
-	gems ¹è¿­ÀÇ °¢ ¿ø¼Ò´Â ±æÀÌ°¡ 1 ÀÌ»ó 10 ÀÌÇÏÀÎ ¾ËÆÄºª ´ë¹®ÀÚ·Î¸¸ ±¸¼ºµÈ ¹®ÀÚ¿­ÀÔ´Ï´Ù.
-	ÀÔÃâ·Â ¿¹
+	[ì œí•œì‚¬í•­]
+	gems ë°°ì—´ì˜ í¬ê¸°ëŠ” 1 ì´ìƒ 100,000 ì´í•˜ìž…ë‹ˆë‹¤.
+	gems ë°°ì—´ì˜ ê° ì›ì†ŒëŠ” ì§„ì—´ëŒ€ì— ë‚˜ì—´ëœ ë³´ì„ì„ ë‚˜íƒ€ëƒ…ë‹ˆë‹¤.
+	gems ë°°ì—´ì—ëŠ” 1ë²ˆ ì§„ì—´ëŒ€ë¶€í„° ì§„ì—´ëŒ€ ë²ˆí˜¸ ìˆœì„œëŒ€ë¡œ ë³´ì„ì´ë¦„ì´ ì°¨ë¡€ëŒ€ë¡œ ì €ìž¥ë˜ì–´ ìžˆìŠµë‹ˆë‹¤.
+	gems ë°°ì—´ì˜ ê° ì›ì†ŒëŠ” ê¸¸ì´ê°€ 1 ì´ìƒ 10 ì´í•˜ì¸ ì•ŒíŒŒë²³ ëŒ€ë¬¸ìžë¡œë§Œ êµ¬ì„±ëœ ë¬¸ìžì—´ìž…ë‹ˆë‹¤.
+	ìž…ì¶œë ¥ ì˜ˆ
 	gems   result
 	["DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"]   [3, 7]
 	["AA", "AB", "AC", "AA", "AC"]   [1, 3]
 	["XYZ", "XYZ", "XYZ"]   [1, 1]
 	["ZZZ", "YYY", "NNNN", "YYY", "BBB"]   [1, 5]
-	ÀÔÃâ·Â ¿¹¿¡ ´ëÇÑ ¼³¸í
-	ÀÔÃâ·Â ¿¹ #1
-	¹®Á¦ ¿¹½Ã¿Í °°½À´Ï´Ù.
+	ìž…ì¶œë ¥ ì˜ˆì— ëŒ€í•œ ì„¤ëª…
+	ìž…ì¶œë ¥ ì˜ˆ #1
+	ë¬¸ì œ ì˜ˆì‹œì™€ ê°™ìŠµë‹ˆë‹¤.
 	
-	ÀÔÃâ·Â ¿¹ #2
-	3Á¾·ùÀÇ º¸¼®(AA, AB, AC)À» ¸ðµÎ Æ÷ÇÔÇÏ´Â °¡Àå ÂªÀº ±¸°£Àº [1, 3], [2, 4]°¡ ÀÖ½À´Ï´Ù.
-	½ÃÀÛ Áø¿­´ë ¹øÈ£°¡ ´õ ÀÛÀº [1, 3]À» return ÇØÁÖ¾î¾ß ÇÕ´Ï´Ù.
+	ìž…ì¶œë ¥ ì˜ˆ #2
+	3ì¢…ë¥˜ì˜ ë³´ì„(AA, AB, AC)ì„ ëª¨ë‘ í¬í•¨í•˜ëŠ” ê°€ìž¥ ì§§ì€ êµ¬ê°„ì€ [1, 3], [2, 4]ê°€ ìžˆìŠµë‹ˆë‹¤.
+	ì‹œìž‘ ì§„ì—´ëŒ€ ë²ˆí˜¸ê°€ ë” ìž‘ì€ [1, 3]ì„ return í•´ì£¼ì–´ì•¼ í•©ë‹ˆë‹¤.
 	
-	ÀÔÃâ·Â ¿¹ #3
-	1Á¾·ùÀÇ º¸¼®(XYZ)À» Æ÷ÇÔÇÏ´Â °¡Àå ÂªÀº ±¸°£Àº [1, 1], [2, 2], [3, 3]ÀÌ ÀÖ½À´Ï´Ù.
-	½ÃÀÛ Áø¿­´ë ¹øÈ£°¡ °¡Àå ÀÛÀº [1, 1]À» return ÇØÁÖ¾î¾ß ÇÕ´Ï´Ù.
+	ìž…ì¶œë ¥ ì˜ˆ #3
+	1ì¢…ë¥˜ì˜ ë³´ì„(XYZ)ì„ í¬í•¨í•˜ëŠ” ê°€ìž¥ ì§§ì€ êµ¬ê°„ì€ [1, 1], [2, 2], [3, 3]ì´ ìžˆìŠµë‹ˆë‹¤.
+	ì‹œìž‘ ì§„ì—´ëŒ€ ë²ˆí˜¸ê°€ ê°€ìž¥ ìž‘ì€ [1, 1]ì„ return í•´ì£¼ì–´ì•¼ í•©ë‹ˆë‹¤.
 	
-	ÀÔÃâ·Â ¿¹ #4
-	4Á¾·ùÀÇ º¸¼®(ZZZ, YYY, NNNN, BBB)À» ¸ðµÎ Æ÷ÇÔÇÏ´Â ±¸°£Àº [1, 5]°¡ À¯ÀÏÇÕ´Ï´Ù.
-	±×·¯¹Ç·Î [1, 5]¸¦ return ÇØÁÖ¾î¾ß ÇÕ´Ï´Ù. 
+	ìž…ì¶œë ¥ ì˜ˆ #4
+	4ì¢…ë¥˜ì˜ ë³´ì„(ZZZ, YYY, NNNN, BBB)ì„ ëª¨ë‘ í¬í•¨í•˜ëŠ” êµ¬ê°„ì€ [1, 5]ê°€ ìœ ì¼í•©ë‹ˆë‹¤.
+	ê·¸ëŸ¬ë¯€ë¡œ [1, 5]ë¥¼ return í•´ì£¼ì–´ì•¼ í•©ë‹ˆë‹¤. 
  */
 
 public class Number3 {
@@ -56,7 +56,7 @@ public class Number3 {
 	static Set<String> gemset = new HashSet<String>();
 	
 	static int minLength = Integer.MAX_VALUE;
-	static int uniqGemNum = 0;		// UniqueÇÑ º¸¼® °³¼ö
+	static int uniqGemNum = 0;		// Uniqueí•œ ë³´ì„ ê°œìˆ˜
 	static int[] ans = new int[2];	// ans[0] : start index | ans[1] : end index
 	
 	
@@ -67,11 +67,11 @@ public class Number3 {
 		for(int i = idx; i <= gemlist.size(); i++) {
 			gemset.add(gemlist.get(i));
 			
-			if (minLength < tmpLength) {	//ÀÌÁ¦±îÁöÀÇ ÃÖ¼Ò ±æÀÌº¸´Ù ´õ ±æ¾îÁø °æ¿ì
+			if (minLength < tmpLength) {	//ì´ì œê¹Œì§€ì˜ ìµœì†Œ ê¸¸ì´ë³´ë‹¤ ë” ê¸¸ì–´ì§„ ê²½ìš°
 				gemset.clear();
 				return;
 			}
-			if (gemset.size() == uniqGemNum) { // UniqÇÑ ¸ðµç º¸¼®ÀÌ ´Ù µé¾î°¬À» °æ¿ì
+			if (gemset.size() == uniqGemNum) { // Uniqí•œ ëª¨ë“  ë³´ì„ì´ ë‹¤ ë“¤ì–´ê°”ì„ ê²½ìš°
 				if(minLength > tmpLength) {
 					minLength = tmpLength;
 					ans[0] = startIdx;
@@ -88,10 +88,10 @@ public class Number3 {
 	
 	public static void main(String[] args) {
 		
-		/*** »ùÇÃ ³Ö±â À§ÇØ¼­ ÀÓ½Ã·Î ¸¸µç ºÎºÐ ***/
+		/*** ìƒ˜í”Œ ë„£ê¸° ìœ„í•´ì„œ ìž„ì‹œë¡œ ë§Œë“  ë¶€ë¶„ ***/
 		Scanner sc = new Scanner(System.in);
 		
-		gemlist.add("empty"); //index¸¦ 1ºÎÅÍ ½ÃÀÛÇÏµµ·Ï ¸ÂÃß±â À§ÇØ¼­
+		gemlist.add("empty"); //indexë¥¼ 1ë¶€í„° ì‹œìž‘í•˜ë„ë¡ ë§žì¶”ê¸° ìœ„í•´ì„œ
 		
 		
 		for(int i = 0; i < 5; i++) {
@@ -102,7 +102,7 @@ public class Number3 {
 		
 		/****************/
 		
-		uniqGemNum = gemset.size(); // uniqueÇÑ º¸¼® °³¼ö
+		uniqGemNum = gemset.size(); // uniqueí•œ ë³´ì„ ê°œìˆ˜
 		gemset.clear();
 		
 		for (int i = 1; i < (gemlist.size()-uniqGemNum); i++) {
