@@ -33,6 +33,7 @@ public class Fence {
 				
 				// ³ÐÀÌ °»½Å
 				if(width * height > size) {
+//					System.out.println("(i, width, height) = (" + i + ", " + width + ", " + height + ")");
 					size = width * height;
 				}
 			}
@@ -52,6 +53,7 @@ public class Fence {
 			}
 			
 			if(width * height > size) {
+				
 				size = width * height;
 			}
 			
