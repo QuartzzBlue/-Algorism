@@ -10,6 +10,7 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Fence {
+	
 	/*** 스위핑(Sweeping) 기법 사용 ***/
 	private static int recycle(int[] fence) {
 		int n = fence.length;

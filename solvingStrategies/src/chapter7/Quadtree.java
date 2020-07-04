@@ -6,8 +6,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class Quadtree {
-	static int idx;
 	
+	static int idx;
 	private static String reverse (String image) {
 		
 		String upperLeft, upperRight, lowerLeft, lowerRight;
@@ -15,6 +15,7 @@ public class Quadtree {
 		if(idx >= image.length()) return "";
 		
 		if(image.charAt(idx) == 'x') {
+			
 			idx++;
 			upperLeft = reverse(image);
 			upperRight = reverse(image);
