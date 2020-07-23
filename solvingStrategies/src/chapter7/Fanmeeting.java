@@ -69,7 +69,7 @@ public class Fanmeeting {
 			int r = 0;
 			for (int i = mNum-1; i >= 0; i--) {
 				r += members.get(i) * fans.get(t--);
-				ans.add(r);
+				if(r > 0) break;
 			}
 			if(r == 0) count++;
 		}
