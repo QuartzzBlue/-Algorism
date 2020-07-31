@@ -11,7 +11,7 @@ import java.util.Set;
 
 
 public class Pi {
-	int MAX = Integer.MAX_VALUE - 11;
+	int int_MAX = 987654321;
 	int[] cache;
 	String number;
 	
@@ -25,7 +25,7 @@ public class Pi {
 		if(idx == number.length()) return 0;
 		if(cache[idx] != -1) return cache[idx];
 		
-		cache[idx] = MAX;
+		cache[idx] = int_MAX;
 		for(int n = 3; n <= 5; n++) {
 			if(idx + n <= number.length()) {
 				String temp = number.substring(idx, idx+n);
