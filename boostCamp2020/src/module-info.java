@@ -1,2 +1,0 @@
-module boostCamp2020 {
-}
