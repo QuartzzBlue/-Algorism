@@ -3,12 +3,12 @@ package dp;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-// 2748번
-public class Fibonacci2 {
+//문제, 피보나치2 
+public class Q2748 {
 	long[] sum;
 	int N;
 	
-	Fibonacci2(int N){
+	Q2748(int N){
 		this.sum = new long[100];
 		this.sum[0] = 0;
 		this.sum[1] = 1;
@@ -25,7 +25,7 @@ public class Fibonacci2 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 		int n = Integer.parseInt(br.readLine());
 		
-		Fibonacci2 fibo = new Fibonacci2(n);
+		Q2748 fibo = new Q2748(n);
 		if(n >= 2) fibo.dp(2);
 		System.out.println(fibo.sum[fibo.N]);
 		br.close();
