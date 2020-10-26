@@ -4,4 +4,3 @@
 * baekjoon - https://www.acmicpc.net/
 * programmers - https://programmers.co.kr/
 * solvingStrategies - 알고리즘 문제해결 전략 (구종만 지음)
- 
